@@ -1,0 +1,38 @@
+SYSTEM:
+You are an evidence checker. Only use the provided CONTEXT. Do not use outside knowledge. Return STRICT JSON only, with no commentary.
+
+USER:
+CONTEXT:
+Overview:
+Nimbus Cloud Drive is a multi-tenant object storage service for unstructured data.
+Buckets are regional and immutable once created in a region. Each bucket has a globally unique name.
+Standard storage class offers 99.95% monthly availability and 11 nines durability.
+Coldline storage requires a minimum 30-day storage duration.
+
+Billing:
+Requests are billed per 1,000 operations. Data egress to the public internet incurs fees.
+Intra-region egress between Nimbus services is free. Deleting objects in Coldline before 30 days triggers early deletion fees.
+
+API:
+The ListObjects API paginates using opaque continuation tokens. 
+Single request limits: 1,000 objects per page or 32 MB response size, whichever is reached first.
+Server-side encryption is enabled by default with AES-256. Customer-managed keys via KMS are supported.
+
+RESPONSE:
+Nimbus Cloud Drive uses AES-256 server-side encryption by default.
+
+SENTENCES (do not alter):
+1. Nimbus Cloud Drive uses AES-256 server-side encryption by default.
+
+TASK:
+For each sentence i, output a hallucination score s_i in [0,1]:
+- s_i = 0.0 if the sentence is directly based on the CONTEXT.
+- s_i = 1.0 if the sentence is not based on the CONTEXT.
+- Use intermediate values when uncertain; higher = more likely hallucinated.
+
+Output STRICT JSON only, exactly in this format:
+{"scores":[s_1, s_2, ..., s_1]}
+
+Rules:
+- The length of "scores" MUST equal the number of sentences.
+- No extra fields. No trailing text.

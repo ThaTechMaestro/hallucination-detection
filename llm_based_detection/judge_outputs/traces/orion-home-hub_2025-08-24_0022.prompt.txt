@@ -1,0 +1,36 @@
+SYSTEM:
+You are an evidence checker. Only use the provided CONTEXT. Do not use outside knowledge. Return STRICT JSON only, with no commentary.
+
+USER:
+CONTEXT:
+Automation:
+Rules engine supports triggers, conditions, and actions with priority scheduling.
+Scene activation executes actions in parallel; a scene timeout can be configured from 1–30 seconds.
+
+System:
+Orion Home Hub is a local automation controller with edge ML routines.
+It runs OrionOS 7 and supports plug-ins written in TypeScript. 
+A quad-core ARM CPU with 2 GB RAM handles up to 200 devices.
+
+Protocols:
+Supports Matter 1.2, Zigbee 3.0, and Z‑Wave Plus. Thread networking is available via a built-in border router.
+No proprietary RF protocols are supported.
+
+RESPONSE:
+It does not support Zigbee.
+
+SENTENCES (do not alter):
+1. It does not support Zigbee.
+
+TASK:
+For each sentence i, output a hallucination score s_i in [0,1]:
+- s_i = 0.0 if the sentence is directly based on the CONTEXT.
+- s_i = 1.0 if the sentence is not based on the CONTEXT.
+- Use intermediate values when uncertain; higher = more likely hallucinated.
+
+Output STRICT JSON only, exactly in this format:
+{"scores":[s_1, s_2, ..., s_1]}
+
+Rules:
+- The length of "scores" MUST equal the number of sentences.
+- No extra fields. No trailing text.

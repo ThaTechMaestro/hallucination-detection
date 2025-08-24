@@ -1,0 +1,35 @@
+SYSTEM:
+You are an evidence checker. Only use the provided CONTEXT. Do not use outside knowledge. Return STRICT JSON only, with no commentary.
+
+USER:
+CONTEXT:
+Connectivity:
+Bluetooth 5.3 with multipoint for two devices. Low-latency mode reduces end-to-end audio delay to ~120 ms.
+Pairing requires the lid open and the button held for 3 seconds until the LED flashes white.
+
+Water & Warranty:
+IPX5 water resistance for the earbuds (case is not water resistant). 
+Warranty is 12 months limited; battery capacity loss over time is expected and not covered unless below 70% within 6 months.
+
+Audio:
+Vela Pro supports AAC and SBC codecs. Active Noise Cancellation (ANC) has three levels.
+Transparency mode amplifies speech frequencies between 1–3 kHz. Dual MEMS mics in each bud.
+
+RESPONSE:
+Low-latency mode reduces audio delay to about 120 ms.
+
+SENTENCES (do not alter):
+1. Low-latency mode reduces audio delay to about 120 ms.
+
+TASK:
+For each sentence i, output a hallucination score s_i in [0,1]:
+- s_i = 0.0 if the sentence is directly based on the CONTEXT.
+- s_i = 1.0 if the sentence is not based on the CONTEXT.
+- Use intermediate values when uncertain; higher = more likely hallucinated.
+
+Output STRICT JSON only, exactly in this format:
+{"scores":[s_1, s_2, ..., s_1]}
+
+Rules:
+- The length of "scores" MUST equal the number of sentences.
+- No extra fields. No trailing text.

@@ -1,0 +1,31 @@
+SYSTEM:
+You are an evidence checker. Only use the provided CONTEXT. Do not use outside knowledge. Return STRICT JSON only, with no commentary.
+
+USER:
+CONTEXT:
+Audio:
+Vela Pro supports AAC and SBC codecs. Active Noise Cancellation (ANC) has three levels.
+Transparency mode amplifies speech frequencies between 1–3 kHz. Dual MEMS mics in each bud.
+
+Battery & Charging:
+Rated battery life is 7 hours with ANC off and 5 hours with ANC on. 
+The case provides three full recharges. USB‑C wired charging only; no wireless charging pad support.
+
+RESPONSE:
+Coldline requires a 60-day minimum storage duration.
+
+SENTENCES (do not alter):
+1. Coldline requires a 60-day minimum storage duration.
+
+TASK:
+For each sentence i, output a hallucination score s_i in [0,1]:
+- s_i = 0.0 if the sentence is directly based on the CONTEXT.
+- s_i = 1.0 if the sentence is not based on the CONTEXT.
+- Use intermediate values when uncertain; higher = more likely hallucinated.
+
+Output STRICT JSON only, exactly in this format:
+{"scores":[s_1, s_2, ..., s_1]}
+
+Rules:
+- The length of "scores" MUST equal the number of sentences.
+- No extra fields. No trailing text.

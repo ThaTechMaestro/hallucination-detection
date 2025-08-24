@@ -1,0 +1,36 @@
+SYSTEM:
+You are an evidence checker. Only use the provided CONTEXT. Do not use outside knowledge. Return STRICT JSON only, with no commentary.
+
+USER:
+CONTEXT:
+Safety:
+Aquila includes a thermal cutoff at 90°C and fails closed to protect compressors.
+If the humidity sensor fails, Aquila logs a diagnostic code H-SNS and continues heating/cooling using temperature only.
+
+Connectivity:
+Wi‑Fi 802.11 b/g/n on 2.4 GHz only. Bluetooth LE is used for initial provisioning.
+Local control is available via HomeKit and Matter 1.1. No Zigbee radio is present.
+
+Automation:
+Schedules support up to 8 events per day with geofencing via the mobile app.
+Eco mode activates when occupancy has been absent for 20 minutes.
+Firmware updates are signed and delivered over-the-air; installation takes ~3 minutes.
+
+RESPONSE:
+It includes a Zigbee radio for pairing.
+
+SENTENCES (do not alter):
+1. It includes a Zigbee radio for pairing.
+
+TASK:
+For each sentence i, output a hallucination score s_i in [0,1]:
+- s_i = 0.0 if the sentence is directly based on the CONTEXT.
+- s_i = 1.0 if the sentence is not based on the CONTEXT.
+- Use intermediate values when uncertain; higher = more likely hallucinated.
+
+Output STRICT JSON only, exactly in this format:
+{"scores":[s_1, s_2, ..., s_1]}
+
+Rules:
+- The length of "scores" MUST equal the number of sentences.
+- No extra fields. No trailing text.
