@@ -46,7 +46,7 @@ pip install -r requirements.txt
 python main.py --input your_data.jsonl --provider openai --model gpt-4o-mini
 ```
 
-[Full LLM Judge Documentation](./llm_judge/README.md)
+[Full LLM Judge Documentation](./llm_judge/readme.md)
 
 
 

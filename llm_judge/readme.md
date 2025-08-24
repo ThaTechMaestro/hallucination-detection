@@ -2,7 +2,7 @@
 
 **Sentence-level hallucination detection using judge LLMs with comprehensive audit trails**
 
-A component of the [Hallucination Detector](../README.md) that leverages large language models (OpenAI GPT or Anthropic Claude) to evaluate the factual groundedness of AI-generated responses at the sentence level.
+A component of the [Hallucination Detector](../readme.md) that leverages large language models (OpenAI GPT or Anthropic Claude) to evaluate the factual groundedness of AI-generated responses at the sentence level.
 
 ## Overview
 
